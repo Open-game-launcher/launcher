@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('/src/assets/fonts/InterTight-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/src/assets/fonts/InterTight-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+
+    font-style: italic;
+}

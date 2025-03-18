@@ -1,0 +1,6 @@
+:root {
+    --primary-dark-color: hsl(0 0% 7%);
+    --primary-light-color: hsl(0 0% 96%);
+    --danger-color: hsl(2, 70%, 49%);
+    --accent-color: hsl(39 97% 66%);
+}

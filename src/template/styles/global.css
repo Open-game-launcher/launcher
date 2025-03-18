@@ -1,0 +1,44 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--primary-dark-color);
+    background-attachment: fixed;
+    background-image: url('/src/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: var(--primary-light-color);
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+
+    scrollbar-color: color-mix(in srgb, var(--primary-light-color), transparent 25%) var(--primary-dark-color);
+    scrollbar-width: thin;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}

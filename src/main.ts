@@ -1,6 +1,10 @@
-import {Channel, invoke} from "@tauri-apps/api/core";
-import {resourceDir} from "@tauri-apps/api/path";
-import prettyBytes from "pretty-bytes";
+import { Channel, invoke } from '@tauri-apps/api/core';
+// import { resourceDir } from '@tauri-apps/api/path';
+import prettyBytes from 'pretty-bytes';
+import { Template } from './template/template.ts';
+
+const instance = new Template();
+document.body.innerHTML = instance.template;
 
 type ChecksumFile = {
     path: string;
@@ -14,10 +18,10 @@ type DownloadFileProgress = {
 };
 
 type DownloadGameFileRequest = {
-    url: string,
-    downloadDir: string,
-    destPath: string,
-}
+    url: string;
+    downloadDir: string;
+    destPath: string;
+};
 
 function chunk<T>(array: T[], size: number = 10): T[][] {
     const chunkedArray: T[][] = [];
@@ -29,28 +33,30 @@ function chunk<T>(array: T[], size: number = 10): T[][] {
     return chunkedArray;
 }
 
-const baseUrl = "https://github.com/Open-game-launcher/testdeleteme/raw/refs/heads/master/";
+const baseUrl = 'https://github.com/Open-game-launcher/testdeleteme/raw/refs/heads/master/';
 // const baseUrl = "https://s3.tebi.io/launcher-game-test/";
-const gameFilesDir = (await resourceDir()) + "/game/";
-const progressEl = document.querySelector("progress")!;
-const buttonEl = document.querySelector("button")!;
-const pEl = document.querySelector("p")!;
+const gameFilesDir = 'test'; // (await resourceDir()) + '/game/';
+const progressEl = document.querySelector('progress')!;
+const buttonEl = document.querySelector('button')!;
+const pEl = document.querySelector('p')!;
 
-buttonEl.addEventListener("click", async () => {
-    let currentDownloadProgress: Record<string, number> = {};
+buttonEl?.addEventListener('click', async () => {
+    const currentDownloadProgress: Record<string, number> = {};
     let currentDownloadSize = 0;
     let totalDownloadSize = 0;
 
-    const rawChecksum = await invoke<string>('download_checksum', {url: baseUrl + 'checksum'});
+    const rawChecksum = await invoke<string>('download_checksum', {
+        url: baseUrl + 'checksum',
+    });
     const checksum: ChecksumFile[] = JSON.parse(rawChecksum);
     const promises: Promise<string>[] = [];
     const chunks = chunk(checksum, 20);
 
     function updateProgress(progress: DownloadFileProgress, filepath: string) {
-        currentDownloadSize += (progress.downloaded_size - (currentDownloadProgress[filepath] ?? 0));
+        currentDownloadSize += progress.downloaded_size - (currentDownloadProgress[filepath] ?? 0);
         currentDownloadProgress[filepath] = progress.downloaded_size;
 
-        progressEl.value = (currentDownloadSize / (totalDownloadSize)) * 100;
+        progressEl.value = (currentDownloadSize / totalDownloadSize) * 100;
         pEl.innerText = `${prettyBytes(currentDownloadSize, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/${prettyBytes(totalDownloadSize, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
 
@@ -65,7 +71,7 @@ buttonEl.addEventListener("click", async () => {
             };
             const channel = new Channel<DownloadFileProgress>();
             channel.onmessage = (e) => updateProgress(e, file.path);
-            promises.push(invoke<string>('download_game_file', {request, channel}));
+            promises.push(invoke<string>('download_game_file', { request, channel }));
         }
 
         await Promise.all(promises).then((promises) => {

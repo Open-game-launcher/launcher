@@ -1,0 +1,48 @@
+:host {
+    --button-min-width: 48px;
+    --button-height: 36px;
+    --button-padding-inline: 24px;
+
+    --button-background-idle: color-mix(in srgb, var(--primary-dark-color), transparent 50%);
+    --button-background-hover: color-mix(in srgb, var(--primary-dark-color), transparent 10%);
+    --button-border-radius: 8px;
+    --button-color: var(--primary-light-color);
+
+    display: inline-block;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    min-width: var(--button-min-width);
+    height: var(--button-height);
+
+    padding-inline: var(--button-padding-inline);
+
+    background-color: var(--button-background-idle);
+    border: none;
+    border-radius: var(--button-border-radius);
+    outline: none;
+
+    color: var(--button-color);
+    font: inherit;
+
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: var(--button-background-hover);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: var(--button-background-hover);
+    }
+
+    &.only-icon {
+        padding-inline: 0;
+    }
+}
