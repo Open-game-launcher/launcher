@@ -1,31 +1,33 @@
 {
-  "name": "launcher",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
-  },
-  "dependencies": {
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-fs": "~2",
-    "@tauri-apps/plugin-http": "~2",
-    "@tauri-apps/plugin-opener": "^2",
-    "pretty-bytes": "^6.1.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.22.0",
-    "@tauri-apps/cli": "^2",
-    "eslint": "^9.22.0",
-    "eslint-config-prettier": "^10.1.1",
-    "globals": "^16.0.0",
-    "prettier": "^3.5.3",
-    "typescript": "~5.6.2",
-    "typescript-eslint": "^8.26.1",
-    "vite": "^6.0.3"
-  },
-  "packageManager": "pnpm@10.4.0+sha512.6b849d0787d97f8f4e1f03a9b8ff8f038e79e153d6f11ae539ae7c435ff9e796df6a862c991502695c7f9e8fac8aeafc1ac5a8dab47e36148d183832d886dd52"
+    "name": "launcher",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "tauri": "tauri"
+    },
+    "dependencies": {
+        "@tauri-apps/api": "^2",
+        "@tauri-apps/plugin-fs": "~2",
+        "@tauri-apps/plugin-http": "~2.3.0",
+        "@tauri-apps/plugin-opener": "^2",
+        "pretty-bytes": "^6.1.1",
+        "semver": "^7.7.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "@tauri-apps/cli": "^2",
+        "@types/semver": "^7.5.8",
+        "eslint": "^9.22.0",
+        "eslint-config-prettier": "^10.1.1",
+        "globals": "^16.0.0",
+        "prettier": "^3.5.3",
+        "typescript": "~5.6.2",
+        "typescript-eslint": "^8.26.1",
+        "vite": "^6.0.3"
+    },
+    "packageManager": "pnpm@10.4.0+sha512.6b849d0787d97f8f4e1f03a9b8ff8f038e79e153d6f11ae539ae7c435ff9e796df6a862c991502695c7f9e8fac8aeafc1ac5a8dab47e36148d183832d886dd52"
 }

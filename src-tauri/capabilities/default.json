@@ -1,14 +1,27 @@
 {
-  "$schema": "../gen/schemas/desktop-schema.json",
-  "identifier": "default",
-  "description": "Capability for the main window",
-  "windows": [
-    "main"
-  ],
-  "permissions": [
-    "core:default",
-    "opener:default",
-    "http:default",
-    "fs:default"
-  ]
+    "$schema": "../gen/schemas/desktop-schema.json",
+    "identifier": "default",
+    "description": "Capability for the main window",
+    "windows": [
+        "main"
+    ],
+    "permissions": [
+        "core:default",
+        "opener:default",
+        "core:window:default",
+        "core:window:allow-start-dragging",
+        "core:window:allow-close",
+        "core:window:allow-minimize",
+        "core:window:allow-toggle-maximize",
+        "core:window:allow-internal-toggle-maximize",
+        "fs:allow-exists",
+        "fs:allow-read-text-file",
+        "fs:allow-write-text-file",
+        "fs:scope-resource",
+        "fs:scope-resource-recursive",
+        {
+            "identifier": "http:default",
+            "allow":  [{ "url": "https://*"}]
+        }
+    ]
 }

@@ -5,6 +5,59 @@
 :root {
     --main-padding-block: 120px;
     --main-padding-inline: 46px;
+
+    --button-min-width: 48px;
+    --button-height: 36px;
+    --button-padding-inline: 24px;
+    --button-background-idle: color-mix(in srgb, var(--primary-dark-color), transparent 50%);
+    --button-background-hover: color-mix(in srgb, var(--primary-dark-color), transparent 10%);
+    --button-border-radius: 8px;
+    --button-color: var(--primary-light-color);
+}
+
+body {
+    user-select: none;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    min-width: var(--button-min-width);
+    height: var(--button-height);
+
+    padding-inline: var(--button-padding-inline);
+
+    background-color: var(--button-background-idle);
+    border: none;
+    border-radius: var(--button-border-radius);
+    outline: none;
+
+    color: var(--button-color);
+    font: inherit;
+
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: var(--button-background-hover);
+    }
+
+    &:focus:not(:disabled) {
+        outline: none;
+        background-color: var(--button-background-hover);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    &.only-icon {
+        padding-inline: 0;
+    }
 }
 
 @scope(header) {
@@ -18,14 +71,15 @@
         align-items: center;
 
         width: 100%;
+        height: 60px;
         padding: 12px 18px;
     }
 
-    ogl-button:first-of-type {
+    button:first-of-type {
         --button-border-radius: 8px 0 0 8px;
     }
 
-    ogl-button:last-of-type {
+    button:last-of-type {
         --button-border-radius: 0 8px 8px 0;
         --button-background-hover: var(--danger-color);
     }
@@ -57,6 +111,22 @@
         top: 12px;
 
         display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+
+        width: 250px;
+
+        &.sticky .progress {
+            transform: translateX(100%) translateY(-55px);
+
+            progress {
+                height: 8px;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
         align-items: center;
         gap: 12px;
     }
@@ -65,6 +135,60 @@
         --button-background-idle: var(--accent-color);
         --button-background-hover: color-mix(in srgb, var(--accent-color), var(--primary-light-color) 30%);
         --button-color: var(--primary-dark-color);
+    }
+
+    .progress {
+        display: none;
+        transform: translateX(0) translateY(0);
+        transition: all .2s ease-out;
+    }
+
+    .progress progress {
+        appearance: none;
+
+        width: 100%;
+        height: 10px;
+
+        border-radius: 4px;
+        background-color: var(--button-background-idle);
+        vertical-align: 0;
+
+        &::-moz-progress-bar {
+            background-color: var(--accent-color);
+        }
+
+        &::-webkit-progress-bar {
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        &::-webkit-progress-value {
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        &::-webkit-progress-inner-element {
+            border-radius: 4px;
+            background-color: transparent;
+        }
+    }
+
+    .progress label {
+        display: block;
+        font-size: 14px;
+
+    }
+
+    #download-error {
+        padding: 4px 10px;
+        border-radius: 4px;
+
+        background-color: var(--danger-color);
+
+        color: #FFFFFF;
+        font-size: 14px;
+
+        box-shadow: 0 0 20px var(--primary-dark-color);
     }
 }
 

@@ -1,11 +1,11 @@
-<header data-tauri-drag-zone>
-  <ogl-button id="minimize-button">
+<header data-tauri-drag-region>
+  <button class="only-icon" id="minimize-button">
       <i class="fas fa-minus" slot="only-icon"></i>
-  </ogl-button>
+  </button>
 
-  <ogl-button id="close-button">
+  <button class="only-icon" id="close-button">
       <i class="fas fa-close" slot="only-icon"></i>
-  </ogl-button>
+  </button>
 </header>
 
 <main>
@@ -13,12 +13,25 @@
     <p>Game subtitle</p>
 
     <div class="game-actions">
-        <ogl-button id="play-button">
-            <i class="fas fa-play"></i> Play
-        </ogl-button>
+        <div class="buttons">
+            <button id="play-button">
+                <i class="fas fa-play"></i> Play
+            </button>
 
-        <ogl-button id="settings-button">
-            <i class="fas fa-gear" slot="only-icon"></i>
-        </ogl-button>
+            <button id="update-button">
+                <i class="fas fa-rotate"></i> Update
+            </button>
+
+            <button class="only-icon" id="settings-button">
+                <i class="fas fa-gear" slot="only-icon"></i>
+            </button>
+        </div>
+
+        <div class="progress">
+            <progress id="download-progress-bar" value="0" max="100"></progress>
+            <label for="download-progress-bar"><span class="current"></span> / <span class="total"></span></label>
+        </div>
+
+        <span id="download-error"></span>
     </div>
 </main>
